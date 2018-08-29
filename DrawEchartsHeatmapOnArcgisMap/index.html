@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>在ArcGis地图中绘制Echarts热力图</title>
+		<link rel="stylesheet" href="https://js.arcgis.com/3.19/esri/css/esri.css" />
+		<style type="text/css">
+			html,
+			body,
+			#map {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			
+			.blurInfo {
+				position: absolute;
+				top: 10px;
+				left: 50px;
+				font-size: 1.25em;
+				font-family: monospace;
+				color: #4C4C4C;
+				width: 240px;
+				background-color: #FFFFFF;
+				padding: 10px;
+				border: 2px solid #57585A;
+				border-radius: 20px;
+				z-index: 9999;
+				/*display:none;*/
+			}
+			
+			.blurInfo p span {
+				background-color: #FFFFFF;
+				padding: 0 5px;
+				border-radius: 5px;
+			}
+			
+			.blurInfo input[type=range] {
+				width: 100%;
+				display: block;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/echarts.min.js"></script>
+		<script type="text/javascript">
+			/*
+			 * 这个配置必须写在加载arcgis api之前，否则不能生效
+			 * location是一个绝对路径，第一个斜杠前面会默认添加一级域名，所以后面要填上二级域名等等,
+			 * 比如：http://localhost:8065/index.html，这种只需要写"/js"即可；
+			 * 而http://localhost:8065/EchartsHeatmapInArcgis/index.html这种就需要写"/../js"或者"/EchartsHeatmapInArcgis/js"
+			 */
+			var dojoConfig = {
+				parseOnLoad: true,
+				packages: [{
+					"name": "src",
+					"location": location.pathname.replace(/\/[^/]+$/, '') + "/js"
+				}]
+			};
+		</script>
+		<!--
+        	作者：tsq
+        	时间：2018-08-29
+        	描述：echartsExtent.js要在arcgis api前面引用，否则会报错
+        -->
+		<script type="text/javascript" src="js/echartsExtent.js"></script>
+		<script src="https://js.arcgis.com/3.19/"></script>
+	</head>
+
+	<body>
+		<div id="map"></div>
+		<script type="text/javascript" src="js/heatmap.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+
+</html>
