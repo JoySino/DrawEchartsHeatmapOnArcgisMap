@@ -1,2 +1,2 @@
-# EchartsHeatmapInArcgis
+# DrawEchartsHeatmapOnArcgisMap
 在Arcgis地图上绘制Echarts热力图
